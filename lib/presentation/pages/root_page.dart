@@ -7,10 +7,13 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appTitle,
-      home: MainPage(),
+      theme: ThemeData(
+        primarySwatch: Colors.brown,
+      ),
+      home: const MainPage(),
     );
   }
 }
