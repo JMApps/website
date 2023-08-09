@@ -12,10 +12,8 @@ class MainAppItem extends StatefulWidget {
 }
 
 class _MainAppItemState extends State<MainAppItem> {
-  final PageController _pageController = PageController(
-    initialPage: 1,
-    viewportFraction: 0.75,
-  );
+  final PageController _pageController =
+      PageController(initialPage: 1, viewportFraction: 1 / 3);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,7 @@ class _MainAppItemState extends State<MainAppItem> {
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: 500,
+          height: 450,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -61,15 +59,8 @@ class _MainAppItemState extends State<MainAppItem> {
                   controller: _pageController,
                   itemCount: widget.item.screenshots.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: 150,
-                      child: Card(
-                        child: Center(
-                          child: Text(
-                            widget.item.screenshots[index],
-                          ),
-                        ),
-                      ),
+                    return Image.asset(
+                      'assets/screenshots/${widget.item.screenshots[index]}.png',
                     );
                   },
                 ),
@@ -90,7 +81,7 @@ class _MainAppItemState extends State<MainAppItem> {
           ),
         ),
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(16),
           alignment: Alignment.center,
           child: SmoothPageIndicator(
             onDotClicked: (index) => _pageController.animateToPage(
@@ -108,6 +99,69 @@ class _MainAppItemState extends State<MainAppItem> {
               activeDotColor: Colors.indigo,
             ),
           ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'СКАЧАТЬ ПРИЛОЖЕНИЕ',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/icons/app_store.png', width: 150),
+                const SizedBox(width: 16),
+                Image.asset('assets/icons/google_play.png', width: 150),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(width: 16),
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.indigo,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Скачиваний',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.indigo,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Оценка',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+              ],
+            ),
+            const SizedBox(height: 8),
+            const Divider(indent: 16, endIndent: 16),
+          ],
         ),
       ],
     );
