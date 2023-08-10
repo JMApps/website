@@ -124,39 +124,9 @@ class _MainAppItemState extends State<MainAppItem> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Image.asset('assets/icons/app_store.png', width: 150),
                 const SizedBox(width: 16),
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.indigo,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Скачиваний',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                Container(
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: Colors.indigo,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Оценка',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
+                Image.asset('assets/icons/google_play.png', width: 150),
               ],
             ),
             const SizedBox(height: 8),
