@@ -1,15 +1,15 @@
 class MainAppModel {
-  final String title;
+  final String appName;
   final String appDescription;
   final List<String> screenshots;
-  final String googlePlayLink;
   final String appStoreLink;
+  final String googlePlayLink;
 
   MainAppModel({
-    required this.title,
+    required this.appName,
     required this.appDescription,
     required this.screenshots,
-    required this.googlePlayLink,
     required this.appStoreLink,
+    required this.googlePlayLink,
   });
 }

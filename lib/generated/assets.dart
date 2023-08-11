@@ -4,8 +4,8 @@ class Assets {
 
   static const String iconsAppStore = 'assets/icons/app_store.png';
   static const String iconsGooglePlay = 'assets/icons/google_play.png';
+  static const String iconsQrCode = 'assets/icons/qr_code.png';
   static const String imagesMainBackground = 'assets/images/main_background.jpg';
-  static const String imagesScreenMobile = 'assets/images/screen_mobile.png';
   static const String screenshots1 = 'assets/screenshots/1.png';
   static const String screenshots2 = 'assets/screenshots/2.png';
   static const String screenshots3 = 'assets/screenshots/3.png';

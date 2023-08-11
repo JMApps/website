@@ -24,7 +24,15 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MainAppList(mainAppBloc: mainAppBloc),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/main_background.jpg'),
+            fit: BoxFit.fill,
+          )
+        ),
+        child: MainAppList(mainAppBloc: mainAppBloc),
+      ),
     );
   }
 }
