@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/data/api_main_app_repository.dart';
 import 'package:website/domain/main_app_bloc.dart';
 import 'package:website/domain/main_app_repository.dart';
 import 'package:website/presentation/lists/main_app_list.dart';
@@ -11,13 +12,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late final MainAppRepository mainAppRepository;
+  late final MainAppRepository apiMainAppRepository;
   late final MainAppBloc mainAppBloc;
 
   @override
   void initState() {
-    mainAppRepository = MainAppRepository();
-    mainAppBloc = MainAppBloc(mainAppRepository);
+    apiMainAppRepository = ApiMainAppRepository();
+    mainAppBloc = MainAppBloc(apiMainAppRepository);
     super.initState();
   }
 
@@ -28,7 +29,7 @@ class _MainPageState extends State<MainPage> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/main_background.jpg'),
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           )
         ),
         child: MainAppList(mainAppBloc: mainAppBloc),
