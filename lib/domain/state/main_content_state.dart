@@ -1,12 +1,11 @@
-import 'dart:async';
-
+import 'package:flutter/material.dart';
 import 'package:website/domain/main_app_repository.dart';
 import 'package:website/presentation/model/main_app_model.dart';
 
-class MainAppBloc {
+class MainContentState extends ChangeNotifier {
   final MainAppRepository _mainAppRepository;
 
-  MainAppBloc(this._mainAppRepository);
+  MainContentState(this._mainAppRepository);
 
   List<MainAppModel> _mainApps = [];
 
@@ -21,5 +20,6 @@ class MainAppBloc {
   Future<void> addNewApp(MainAppModel mainAppModel) async {
     await _mainAppRepository.addMainApp(mainAppModel);
     _mainApps.add(mainAppModel);
+    notifyListeners();
   }
 }

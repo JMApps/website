@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:website/application/strings/app_strings.dart';
 import 'package:website/application/styles/app_styles.dart';
-import 'package:website/domain/main_app_bloc.dart';
+import 'package:website/domain/state/main_content_state.dart';
 import 'package:website/presentation/desktop/main_app_item_desktop.dart';
 import 'package:website/presentation/model/main_app_model.dart';
 import 'package:website/presentation/phone/main_app_item_phone.dart';
 import 'package:website/presentation/tablet/main_app_item_tablet.dart';
 
 class MainAppList extends StatelessWidget {
-  final MainAppBloc mainAppBloc;
-
-  const MainAppList({super.key, required this.mainAppBloc});
+  const MainAppList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<MainAppModel>>(
-      future: mainAppBloc.getLoadMainAppModels,
-      builder:
-          (BuildContext context, AsyncSnapshot<List<MainAppModel>> snapshot) {
+      future: context.read<MainContentState>().getLoadMainAppModels,
+      builder: (BuildContext context, AsyncSnapshot<List<MainAppModel>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-            itemCount: mainAppBloc.getMainApps.length,
+            itemCount: context.read<MainContentState>().getMainApps.length,
             itemBuilder: (BuildContext context, int index) {
               final MainAppModel mainAppModel = snapshot.data![index];
               return ScreenTypeLayout.builder(
@@ -38,7 +35,7 @@ class MainAppList extends StatelessWidget {
           return Center(
             child: Padding(
               padding: AppStyles.mainPadding,
-              child: Text(
+              child: SelectableText(
                 '${snapshot.error}',
                 style: const TextStyle(
                   fontSize: 20,

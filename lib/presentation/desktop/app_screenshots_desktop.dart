@@ -12,7 +12,7 @@ class AppScreenshotsDesktop extends StatefulWidget {
 }
 
 class _AppScreenshotsDesktopState extends State<AppScreenshotsDesktop> {
-  final PageController _pageController = PageController(viewportFraction: 1 / 3);
+  final PageController _pageController = PageController(viewportFraction: 1 / 3, initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
