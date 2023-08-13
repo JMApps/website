@@ -16,9 +16,17 @@ class QRLinks extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AppStoreQR(),
+            SizedBox(
+              height: 150,
+              width: 150,
+              child: AppStoreQR(),
+            ),
             SizedBox(width: 16),
-            GooglePlayQR(),
+            SizedBox(
+              height: 150,
+              width: 150,
+              child: GooglePlayQR(),
+            ),
           ],
         ),
         SizedBox(height: 16),

@@ -46,12 +46,9 @@ class _AppScreenshotsTabletState extends State<AppScreenshotsTablet> {
                     child: PageView.builder(
                       controller: _pageController,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: widget.item.screenshots.length,
+                      itemCount: widget.item.appScreen.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Image.asset(
-                          'assets/screenshots/${widget.item.screenshots[index]}.png',
-                          fit: BoxFit.fitHeight,
-                        );
+                        return Image.network(widget.item.appScreen[index]);
                       },
                     ),
                   ),
@@ -80,7 +77,7 @@ class _AppScreenshotsTabletState extends State<AppScreenshotsTablet> {
                   curve: Curves.bounceIn,
                 ),
                 controller: _pageController,
-                count: widget.item.screenshots.length,
+                count: widget.item.appScreen.length,
                 effect: ScrollingDotsEffect(
                   maxVisibleDots: 5,
                   dotWidth: 7.5,

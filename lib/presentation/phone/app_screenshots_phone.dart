@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:website/application/strings/app_strings.dart';
+import 'package:website/application/styles/app_styles.dart';
 import 'package:website/presentation/model/main_app_model.dart';
 
 class AppScreenshotsPhone extends StatefulWidget {
@@ -22,13 +24,30 @@ class _AppScreenshotsPhoneState extends State<AppScreenshotsPhone> {
         borderRadius: BorderRadius.circular(25),
       ),
       child: SizedBox(
-        height: 550,
+        height: 500,
         child: Column(
           children: [
             const SizedBox(height: 16),
             Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: widget.item.appScreen.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Image.network(
+                      '${AppStrings.appLinkForApi}${widget.item.appScreen[index]['screen']}',
+                      fit: BoxFit.cover,
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: AppStyles.mainPadding,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const SizedBox(width: 8),
                   FloatingActionButton.small(
@@ -42,17 +61,20 @@ class _AppScreenshotsPhoneState extends State<AppScreenshotsPhone> {
                     child: const Icon(Icons.arrow_back_ios_new_rounded),
                   ),
                   const SizedBox(width: 8),
-                  Expanded(
-                    child: PageView.builder(
-                      controller: _pageController,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: widget.item.screenshots.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Image.asset(
-                          'assets/screenshots/${widget.item.screenshots[index]}.png',
-                          fit: BoxFit.fitHeight,
-                        );
-                      },
+                  SmoothPageIndicator(
+                    onDotClicked: (index) => _pageController.animateToPage(
+                      index,
+                      duration: const Duration(milliseconds: 50),
+                      curve: Curves.bounceIn,
+                    ),
+                    controller: _pageController,
+                    count: widget.item.appScreen.length,
+                    effect: ScrollingDotsEffect(
+                      maxVisibleDots: 5,
+                      dotWidth: 7.5,
+                      dotHeight: 7.5,
+                      dotColor: Colors.indigo.shade100,
+                      activeDotColor: Colors.indigo,
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -68,26 +90,6 @@ class _AppScreenshotsPhoneState extends State<AppScreenshotsPhone> {
                   ),
                   const SizedBox(width: 8),
                 ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(16),
-              alignment: Alignment.center,
-              child: SmoothPageIndicator(
-                onDotClicked: (index) => _pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 50),
-                  curve: Curves.bounceIn,
-                ),
-                controller: _pageController,
-                count: widget.item.screenshots.length,
-                effect: ScrollingDotsEffect(
-                  maxVisibleDots: 5,
-                  dotWidth: 7.5,
-                  dotHeight: 7.5,
-                  dotColor: Colors.indigo.shade100,
-                  activeDotColor: Colors.indigo,
-                ),
               ),
             ),
           ],

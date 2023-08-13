@@ -12,7 +12,8 @@ class AppScreenshotsDesktop extends StatefulWidget {
 }
 
 class _AppScreenshotsDesktopState extends State<AppScreenshotsDesktop> {
-  final PageController _pageController = PageController(viewportFraction: 1 / 3, initialPage: 1);
+  final PageController _pageController =
+      PageController(viewportFraction: 1 / 3, initialPage: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +47,9 @@ class _AppScreenshotsDesktopState extends State<AppScreenshotsDesktop> {
                     child: PageView.builder(
                       controller: _pageController,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: widget.item.screenshots.length,
+                      itemCount: widget.item.appScreen.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return Image.asset(
-                          'assets/screenshots/${widget.item.screenshots[index]}.png',
-                          fit: BoxFit.fitHeight,
-                        );
+                        return Image.network(widget.item.appScreen[index]);
                       },
                     ),
                   ),
@@ -80,7 +78,7 @@ class _AppScreenshotsDesktopState extends State<AppScreenshotsDesktop> {
                   curve: Curves.bounceIn,
                 ),
                 controller: _pageController,
-                count: widget.item.screenshots.length,
+                count: widget.item.appScreen.length,
                 effect: ScrollingDotsEffect(
                   maxVisibleDots: 5,
                   dotWidth: 7.5,

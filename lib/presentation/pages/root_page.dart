@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:website/application/strings/app_strings.dart';
+import 'package:website/data/api_main_app_repository.dart';
 import 'package:website/domain/main_app_repository.dart';
 import 'package:website/domain/state/main_content_state.dart';
 import 'package:website/presentation/pages/main_page.dart';
@@ -13,7 +14,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  final MainAppRepository mainAppRepository = MainAppRepository();
+  final MainAppRepository mainAppRepository = ApiMainAppRepository();
 
   @override
   Widget build(BuildContext context) {
