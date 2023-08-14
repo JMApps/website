@@ -1,31 +1,43 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:website/application/routes/app_routes.dart';
 import 'package:website/application/strings/app_strings.dart';
-import 'package:website/data/api_main_app_repository.dart';
-import 'package:website/domain/main_app_repository.dart';
-import 'package:website/domain/state/main_content_state.dart';
-import 'package:website/presentation/pages/main_page.dart';
+import 'package:website/application/themes/app_themes.dart';
+import 'package:website/domain/state/main_state.dart';
 
-class RootPage extends StatefulWidget {
+class RootPage extends StatelessWidget {
   const RootPage({super.key});
-
-  @override
-  State<RootPage> createState() => _RootPageState();
-}
-
-class _RootPageState extends State<RootPage> {
-  final MainAppRepository mainAppRepository = ApiMainAppRepository();
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => MainContentState(mainAppRepository))
+        ChangeNotifierProvider(
+          create: (_) => MainState(),
+        ),
       ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppStrings.appTitle,
-        home: MainPage(),
+      child: Consumer<MainState>(
+        builder: (context, mainState, _) {
+          return MaterialApp(
+            scrollBehavior: const MaterialScrollBehavior().copyWith(
+              dragDevices: {
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.touch,
+                PointerDeviceKind.stylus,
+                PointerDeviceKind.unknown
+              },
+            ),
+            debugShowCheckedModeBanner: false,
+            title: AppStrings.appTitle,
+            theme: AppThemes.lightTheme,
+            darkTheme: AppThemes.darkTheme,
+            themeMode: mainState.getDarkThemeState ? ThemeMode.dark : ThemeMode.light,
+            onGenerateRoute: AppRoutes.onGeneratorRoue,
+            initialRoute: 'main_page',
+          );
+        },
       ),
     );
   }
