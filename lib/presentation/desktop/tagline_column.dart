@@ -3,7 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:website/application/colors/custom_colors.dart';
 import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/tagline_bloc.dart';
-import 'package:website/presentation/desktop/tagline_model.dart';
+import 'package:website/domain/model/tagline_model.dart';
 
 class TagLineColumn extends StatefulWidget {
   final TagLineBloc tagLineBloc;

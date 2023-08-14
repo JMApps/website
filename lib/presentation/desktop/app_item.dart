@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:website/presentation/desktop/app_model.dart';
+import 'package:website/domain/model/app_model.dart';
 import 'package:website/presentation/widgets/app_store_picture.dart';
 import 'package:website/presentation/widgets/app_store_qr.dart';
 import 'package:website/presentation/widgets/google_play_picture.dart';
@@ -133,7 +133,7 @@ class _AppItemState extends State<AppItem> {
                       SmoothPageIndicator(
                         onDotClicked: (index) => _screenshotPageController.animateToPage(
                           index,
-                          duration: const Duration(milliseconds: 1500),
+                          duration: const Duration(milliseconds: 750),
                           curve: Curves.easeInOutQuad,
                         ),
                         controller: _screenshotPageController,

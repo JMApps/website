@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:website/application/strings/app_strings.dart';
-import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/app_bloc.dart';
 import 'package:website/domain/app_repository.dart';
 import 'package:website/domain/state/main_state.dart';
 import 'package:website/domain/tagline_bloc.dart';
 import 'package:website/domain/tagline_repository.dart';
 import 'package:website/presentation/desktop/app_pages.dart';
+import 'package:website/presentation/phone/app_mobile_pages.dart';
 import 'package:website/presentation/widgets/theme_switch.dart';
 
 class MainPage extends StatefulWidget {
@@ -44,36 +44,9 @@ class _MainPageState extends State<MainPage> {
           ThemeSwitch(),
         ],
       ),
-      body: Stack(
-        children: [
-          AppPages(appBloc: appBloc),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: AppStyles.mainPaddingMini,
-              child: Consumer<MainState>(
-                builder: (context, mainState, _) {
-                  return SmoothPageIndicator(
-                    onDotClicked: (index) => appBloc.getAppPageController.animateToPage(
-                      index,
-                      duration: const Duration(milliseconds: 1500),
-                      curve: Curves.easeInOutQuad,
-                    ),
-                    axisDirection: Axis.vertical,
-                    controller: appBloc.getAppPageController,
-                    count: appBloc.getApps.length,
-                    effect: ExpandingDotsEffect(
-                      dotWidth: 16,
-                      dotHeight: 14,
-                      dotColor: mainState.getMainColor.withOpacity(0.25),
-                      activeDotColor: mainState.getMainColor,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
+      body: ScreenTypeLayout.builder(
+        desktop: (BuildContext context) => AppPages(appBloc: appBloc),
+        mobile: (BuildContext context) => AppMobilePages(appBloc: appBloc),
       ),
     );
   }

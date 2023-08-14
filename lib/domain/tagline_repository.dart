@@ -1,4 +1,4 @@
-import 'package:website/presentation/desktop/tagline_model.dart';
+import 'package:website/domain/model/tagline_model.dart';
 
 class TagLineRepository {
   Future<List<TagLineModel>> fetchTagLines() async {

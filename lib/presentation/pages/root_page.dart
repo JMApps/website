@@ -6,6 +6,7 @@ import 'package:website/application/routes/app_routes.dart';
 import 'package:website/application/strings/app_strings.dart';
 import 'package:website/application/themes/app_themes.dart';
 import 'package:website/domain/state/main_state.dart';
+import 'package:website/presentation/pages/main_page.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -35,7 +36,7 @@ class RootPage extends StatelessWidget {
             darkTheme: AppThemes.darkTheme,
             themeMode: mainState.getDarkThemeState ? ThemeMode.dark : ThemeMode.light,
             onGenerateRoute: AppRoutes.onGeneratorRoue,
-            initialRoute: 'main_page',
+            home: const MainPage(),
           );
         },
       ),

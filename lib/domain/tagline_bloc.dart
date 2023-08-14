@@ -1,5 +1,5 @@
 import 'package:website/domain/tagline_repository.dart';
-import 'package:website/presentation/desktop/tagline_model.dart';
+import 'package:website/domain/model/tagline_model.dart';
 
 class TagLineBloc {
   final TagLineRepository _tagLineRepository;

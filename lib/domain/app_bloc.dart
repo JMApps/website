@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:website/domain/app_repository.dart';
-import 'package:website/presentation/desktop/app_model.dart';
+import 'package:website/domain/model/app_model.dart';
 
 class AppBloc {
   final AppRepository _appRepository;
