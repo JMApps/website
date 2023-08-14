@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:website/domain/state/main_content_state.dart';
 
 class GooglePlayPicture extends StatelessWidget {
-  const GooglePlayPicture({super.key});
+  const GooglePlayPicture({super.key, required this.linkGooglePlay});
+
+  final String linkGooglePlay;
 
   @override
   Widget build(BuildContext context) {
-    final Uri uri = Uri.parse(context.read<MainContentState>().getMainApps[0].googlePlayLink);
+    final Uri uri = Uri.parse(linkGooglePlay);
     return GestureDetector(
       onTap: () async {
         !await launchUrl(uri);

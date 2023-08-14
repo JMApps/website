@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:website/application/strings/app_strings.dart';
-import 'package:website/domain/state/main_content_state.dart';
 
 class AppStoreQR extends StatelessWidget {
-  const AppStoreQR({super.key});
+  const AppStoreQR({
+    super.key,
+    required this.qrAppStoreName,
+    required this.qrColor,
+  });
+
+  final String qrAppStoreName;
+  final Color qrColor;
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      '${AppStrings.appLinkForApi}${context.read<MainContentState>().getMainApps[0].qrAppStore}',
-      gaplessPlayback: true,
+    return Image.asset(
+      'assets/qr/$qrAppStoreName.png',
       height: 150,
       width: 150,
+      color: qrColor,
     );
   }
 }

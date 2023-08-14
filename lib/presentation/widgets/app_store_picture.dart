@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../domain/state/main_content_state.dart';
-
 class AppStorePicture extends StatelessWidget {
-  const AppStorePicture({super.key});
+  const AppStorePicture({super.key, required this.linkAppStore});
+
+  final String linkAppStore;
 
   @override
   Widget build(BuildContext context) {
-    final MainContentState contentState = context.read<MainContentState>();
-    final Uri uri = Uri.parse(contentState.getMainApps[0].appStoreLink);
+    final Uri uri = Uri.parse(linkAppStore);
     return GestureDetector(
       onTap: () async {
         !await launchUrl(uri);
