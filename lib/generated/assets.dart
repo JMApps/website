@@ -4,6 +4,13 @@ class Assets {
 
   static const String iconsAppStore = 'assets/icons/app_store.png';
   static const String iconsGooglePlay = 'assets/icons/google_play.png';
+  static const String images1 = 'assets/images/1.png';
+  static const String images2 = 'assets/images/2.png';
+  static const String images3 = 'assets/images/3.png';
   static const String imagesMainBackground = 'assets/images/main_background.jpg';
+  static const String qrFmas = 'assets/qr/fmas.png';
+  static const String qrFmgp = 'assets/qr/fmgp.png';
+  static const String qrSmas = 'assets/qr/smas.png';
+  static const String qrSmgp = 'assets/qr/smgp.png';
 
 }
