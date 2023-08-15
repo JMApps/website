@@ -4,9 +4,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:website/application/colors/custom_colors.dart';
 import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/app_bloc.dart';
+import 'package:website/domain/model/app_model.dart';
 import 'package:website/domain/state/main_state.dart';
 import 'package:website/presentation/desktop/app_item.dart';
-import 'package:website/domain/model/app_model.dart';
 
 class AppPages extends StatelessWidget {
   final AppBloc appBloc;
@@ -64,9 +64,9 @@ class AppPages extends StatelessWidget {
                           curve: Curves.easeInOutQuad,
                         ),
                         effect: ExpandingDotsEffect(
-                          dotWidth: 16,
-                          dotHeight: 14,
-                          dotColor: mainState.getMainColor.withOpacity(0.25),
+                          dotWidth: 15,
+                          dotHeight: 12,
+                          dotColor: Colors.blueGrey,
                           activeDotColor: mainState.getMainColor,
                         ),
                       );

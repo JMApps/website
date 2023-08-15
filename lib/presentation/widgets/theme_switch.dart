@@ -11,7 +11,7 @@ class ThemeSwitch extends StatelessWidget {
       builder: (context, mainState, _) {
         return Switch(
           value: mainState.getDarkThemeState,
-          trackColor: MaterialStateProperty.all(Colors.grey),
+          trackColor: MaterialStateProperty.all(Colors.blueGrey),
           thumbColor: MaterialStateProperty.all(mainState.getMainColor.withOpacity(0.50)),
           onChanged: (bool? onChanged) {
             mainState.setDarkThemeState = onChanged!;

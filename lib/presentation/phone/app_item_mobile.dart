@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/model/app_model.dart';
 import 'package:website/presentation/widgets/app_store_picture.dart';
 import 'package:website/presentation/widgets/app_store_qr.dart';
@@ -30,6 +31,7 @@ class _AppItemMobileState extends State<AppItemMobile> {
   Widget build(BuildContext context) {
     return Container(
       color: widget.backgroundColor,
+      padding: AppStyles.mainPaddingHorizontalMini,
       child: Column(
         children: [
           const SizedBox(height: 8),
@@ -43,37 +45,36 @@ class _AppItemMobileState extends State<AppItemMobile> {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-              maxLines: 50,
-              textAlign: TextAlign.center,
+          Text(
+            widget.item.appDescription,
+            style: const TextStyle(
+              fontSize: 18,
             ),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Stack(
+            alignment: Alignment.center,
             children: [
-              const SizedBox(width: 8),
-              FloatingActionButton.small(
-                onPressed: () {
-                  _screenshotPageController.previousPage(
-                    duration: const Duration(milliseconds: 750),
-                    curve: Curves.easeInOutQuad,
-                  );
-                },
-                elevation: 0,
-                backgroundColor: widget.textColor,
-                child: const Icon(
-                  Icons.arrow_back_ios_sharp,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FloatingActionButton.small(
+                  onPressed: () {
+                    _screenshotPageController.previousPage(
+                      duration: const Duration(milliseconds: 750),
+                      curve: Curves.easeInOutQuad,
+                    );
+                  },
+                  elevation: 0,
+                  backgroundColor: widget.textColor,
+                  child: const Icon(
+                    Icons.arrow_back_ios_sharp,
+                  ),
                 ),
               ),
               const SizedBox(width: 8),
-              Expanded(
+              Align(
+                alignment: Alignment.center,
                 child: SizedBox(
                   height: 500,
                   child: PageView.builder(
@@ -87,42 +88,44 @@ class _AppItemMobileState extends State<AppItemMobile> {
                 ),
               ),
               const SizedBox(width: 8),
-              FloatingActionButton.small(
-                onPressed: () {
-                  _screenshotPageController.nextPage(
-                    duration: const Duration(milliseconds: 750),
-                    curve: Curves.easeInOutQuad,
-                  );
-                },
-                elevation: 0,
-                backgroundColor: widget.textColor,
-                child: const Icon(
-                  Icons.arrow_forward_ios_sharp,
+              Align(
+                alignment: Alignment.centerRight,
+                child: FloatingActionButton.small(
+                  onPressed: () {
+                    _screenshotPageController.nextPage(
+                      duration: const Duration(milliseconds: 750),
+                      curve: Curves.easeInOutQuad,
+                    );
+                  },
+                  elevation: 0,
+                  backgroundColor: widget.textColor,
+                  child: const Icon(
+                    Icons.arrow_forward_ios_sharp,
+                  ),
                 ),
               ),
-              const SizedBox(width: 8),
             ],
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 125,
+                    width: 125,
                     child: AppStoreQR(
                       qrAppStoreName: widget.item.qrAppStore,
                       qrColor: widget.textColor,
                     ),
                   ),
-                  const SizedBox(width: 16),
+                  const SizedBox(width: 8),
                   SizedBox(
-                    height: 150,
-                    width: 150,
+                    height: 125,
+                    width: 125,
                     child: GooglePlayQR(
                       qrGooglePlayName: widget.item.qrGooglePlay,
                       qrColor: widget.textColor,
@@ -130,19 +133,29 @@ class _AppItemMobileState extends State<AppItemMobile> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppStorePicture(linkAppStore: widget.item.linkAppStore),
+                  SizedBox(
+                    width: 125,
+                    child: AppStorePicture(
+                      linkAppStore: widget.item.linkAppStore,
+                    ),
+                  ),
                   const SizedBox(width: 8),
-                  GooglePlayPicture(linkGooglePlay: widget.item.linkGooglePlay),
+                  SizedBox(
+                    width: 125,
+                    child: GooglePlayPicture(
+                      linkGooglePlay: widget.item.linkGooglePlay,
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(height: 8),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/model/app_model.dart';
 import 'package:website/presentation/widgets/app_store_picture.dart';
 import 'package:website/presentation/widgets/app_store_qr.dart';
@@ -30,9 +31,8 @@ class _AppItemState extends State<AppItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
       color: widget.backgroundColor,
+      padding: AppStyles.mainPaddingHorizontal,
       child: Row(
         children: [
           Expanded(
@@ -48,12 +48,11 @@ class _AppItemState extends State<AppItem> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const Text(
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-                  style: TextStyle(
+                Text(
+                  widget.item.appDescription,
+                  style: const TextStyle(
                     fontSize: 25,
                   ),
-                  maxLines: 50,
                   textAlign: TextAlign.center,
                 ),
                 Column(
@@ -86,13 +85,16 @@ class _AppItemState extends State<AppItem> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AppStorePicture(linkAppStore: widget.item.linkAppStore),
+                        AppStorePicture(
+                          linkAppStore: widget.item.linkAppStore,
+                        ),
                         const SizedBox(width: 16),
                         GooglePlayPicture(
-                            linkGooglePlay: widget.item.linkGooglePlay),
+                          linkGooglePlay: widget.item.linkGooglePlay,
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 16),
                   ],
                 ),
               ],
@@ -100,7 +102,7 @@ class _AppItemState extends State<AppItem> {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(36),
+              padding: const EdgeInsets.all(24),
               child: Column(
                 children: [
                   Expanded(
@@ -113,11 +115,11 @@ class _AppItemState extends State<AppItem> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 36),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      FloatingActionButton.small(
+                      FloatingActionButton(
                         onPressed: () {
                           _screenshotPageController.previousPage(
                             duration: const Duration(milliseconds: 750),
@@ -138,14 +140,14 @@ class _AppItemState extends State<AppItem> {
                         ),
                         controller: _screenshotPageController,
                         count: widget.count,
-                        effect: ExpandingDotsEffect(
+                        effect: WormEffect(
                           dotWidth: 12,
-                          dotHeight: 8,
+                          dotHeight: 12,
                           dotColor: widget.textColor.withOpacity(0.25),
                           activeDotColor: widget.textColor,
                         ),
                       ),
-                      FloatingActionButton.small(
+                      FloatingActionButton(
                         onPressed: () {
                           _screenshotPageController.nextPage(
                             duration: const Duration(milliseconds: 750),
