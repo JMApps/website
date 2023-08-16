@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:website/application/colors/custom_colors.dart';
 import 'package:website/application/styles/app_styles.dart';
-import 'package:website/domain/tagline_bloc.dart';
 import 'package:website/domain/model/tagline_model.dart';
+import 'package:website/domain/tagline_bloc.dart';
 
 class TagLineColumn extends StatefulWidget {
   final TagLineBloc tagLineBloc;
@@ -21,7 +21,8 @@ class _TagLineColumnState extends State<TagLineColumn> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<TagLineModel>>(
       future: widget.tagLineBloc.getLoadTagLines,
-      builder: (BuildContext context, AsyncSnapshot<List<TagLineModel>> snapshot) {
+      builder:
+          (BuildContext context, AsyncSnapshot<List<TagLineModel>> snapshot) {
         if (snapshot.hasData) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +75,7 @@ class _TagLineColumnState extends State<TagLineColumn> {
                   activeDotColor: CustomColors.mainAppDarkColors[0],
                 ),
               ),
+              const SizedBox(height: 8),
             ],
           );
         } else if (snapshot.hasError) {
