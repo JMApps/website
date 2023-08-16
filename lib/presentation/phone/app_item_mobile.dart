@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:website/application/styles/app_styles.dart';
 import 'package:website/domain/model/app_model.dart';
 import 'package:website/presentation/widgets/app_store_picture.dart';
@@ -56,22 +57,6 @@ class _AppItemMobileState extends State<AppItemMobile> {
           Stack(
             alignment: Alignment.center,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: FloatingActionButton.small(
-                  onPressed: () {
-                    _screenshotPageController.previousPage(
-                      duration: const Duration(milliseconds: 750),
-                      curve: Curves.easeInOutQuad,
-                    );
-                  },
-                  elevation: 0,
-                  backgroundColor: widget.textColor,
-                  child: const Icon(
-                    Icons.arrow_back_ios_sharp,
-                  ),
-                ),
-              ),
               const SizedBox(width: 8),
               Align(
                 alignment: Alignment.center,
@@ -89,10 +74,26 @@ class _AppItemMobileState extends State<AppItemMobile> {
               ),
               const SizedBox(width: 8),
               Align(
+                alignment: Alignment.centerLeft,
+                child: FloatingActionButton.small(
+                  onPressed: () async {
+                    await _screenshotPageController.previousPage(
+                      duration: const Duration(milliseconds: 750),
+                      curve: Curves.easeInOutQuad,
+                    );
+                  },
+                  elevation: 0,
+                  backgroundColor: widget.textColor,
+                  child: const Icon(
+                    Icons.arrow_back_ios_sharp
+                  ),
+                ),
+              ),
+              Align(
                 alignment: Alignment.centerRight,
                 child: FloatingActionButton.small(
-                  onPressed: () {
-                    _screenshotPageController.nextPage(
+                  onPressed: () async {
+                    await _screenshotPageController.nextPage(
                       duration: const Duration(milliseconds: 750),
                       curve: Curves.easeInOutQuad,
                     );
@@ -105,6 +106,22 @@ class _AppItemMobileState extends State<AppItemMobile> {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 12),
+          SmoothPageIndicator(
+            onDotClicked: (index) => _screenshotPageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 750),
+              curve: Curves.easeInOutQuad,
+            ),
+            controller: _screenshotPageController,
+            count: widget.count,
+            effect: WormEffect(
+              dotWidth: 8,
+              dotHeight: 8,
+              dotColor: widget.textColor.withOpacity(0.25),
+              activeDotColor: widget.textColor,
+            ),
           ),
           const SizedBox(height: 8),
           Column(

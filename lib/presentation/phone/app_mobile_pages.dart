@@ -20,21 +20,27 @@ class AppMobilePages extends StatelessWidget {
         if (snapshot.hasData) {
           return Consumer<MainState>(
             builder: (context, mainState, _) {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final AppModel item = snapshot.data![index];
-                  return AppItemMobile(
-                    item: item,
-                    backgroundColor: mainState.getDarkThemeState
-                        ? CustomColors.mainAppDarkColors[index]
-                        : CustomColors.mainAppLightColors[index],
-                    textColor: mainState.getDarkThemeState
-                        ? CustomColors.mainAppLightColors[index]
-                        : CustomColors.mainAppDarkColors[index],
-                    count: appBloc.getApps.length,
-                  );
-                },
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final AppModel item = snapshot.data![index];
+                        return AppItemMobile(
+                          item: item,
+                          backgroundColor: mainState.getDarkThemeState
+                              ? CustomColors.mainAppDarkColors[index]
+                              : CustomColors.mainAppLightColors[index],
+                          textColor: mainState.getDarkThemeState
+                              ? CustomColors.mainAppLightColors[index]
+                              : CustomColors.mainAppDarkColors[index],
+                          count: appBloc.getApps.length,
+                        );
+                      },
+                    ),
+                  ),
+                ],
               );
             },
           );
