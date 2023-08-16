@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String fontsMontserratMedium = 'assets/fonts/montserrat_medium.ttf';
   static const String iconsAppStore = 'assets/icons/app_store.png';
   static const String iconsGooglePlay = 'assets/icons/google_play.png';
   static const String images1 = 'assets/images/1.png';

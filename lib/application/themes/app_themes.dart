@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppThemes {
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
+    fontFamily: 'Montserrat',
     scaffoldBackgroundColor: const Color(0xFFC5CAE9),
     appBarTheme: const AppBarTheme(
       centerTitle: false,
@@ -17,6 +18,7 @@ class AppThemes {
 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
+    fontFamily: 'Montserrat',
     scaffoldBackgroundColor: const Color(0xFF191A36),
     appBarTheme: const AppBarTheme(
       centerTitle: false,

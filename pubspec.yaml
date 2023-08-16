@@ -34,3 +34,9 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/qr/
+    - assets/fonts/
+
+  fonts:
+    - family: 'Montserrat'
+      fonts:
+        - asset: assets/fonts/montserrat_medium.ttf
