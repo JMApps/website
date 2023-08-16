@@ -27,7 +27,8 @@ class RootPage extends StatelessWidget {
                 PointerDeviceKind.mouse,
                 PointerDeviceKind.touch,
                 PointerDeviceKind.stylus,
-                PointerDeviceKind.unknown
+                PointerDeviceKind.trackpad,
+                PointerDeviceKind.unknown,
               },
             ),
             debugShowCheckedModeBanner: false,
@@ -36,6 +37,7 @@ class RootPage extends StatelessWidget {
             darkTheme: AppThemes.darkTheme,
             themeMode: mainState.getDarkThemeState ? ThemeMode.dark : ThemeMode.light,
             onGenerateRoute: AppRoutes.onGeneratorRoue,
+            onUnknownRoute: AppRoutes.onUnknownRoute,
             home: const MainPage(),
           );
         },
