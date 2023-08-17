@@ -21,13 +21,13 @@ class _TagLineColumnState extends State<TagLineColumn> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<TagLineModel>>(
       future: widget.tagLineBloc.getLoadTagLines,
-      builder:
-          (BuildContext context, AsyncSnapshot<List<TagLineModel>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<TagLineModel>> snapshot) {
         if (snapshot.hasData) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
+              SizedBox(
+                height: 250,
                 child: PageView.builder(
                   controller: _taglinePageController,
                   scrollDirection: Axis.horizontal,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:website/presentation/pages/applications_page.dart';
 import 'package:website/presentation/pages/error_page.dart';
 import 'package:website/presentation/pages/main_page.dart';
 
@@ -8,6 +9,10 @@ class AppRoutes {
       case '/main':
         return MaterialPageRoute(
           builder: (_) => const MainPage(),
+        );
+      case '/main/applications':
+        return MaterialPageRoute(
+          builder: (_) => const ApplicationsPage(),
         );
       default:
         return MaterialPageRoute(

@@ -19,7 +19,6 @@ class _MainPageState extends State<MainPage> {
   late final TagLineRepository tagLineRepository;
   late final TagLineBloc tagLineBloc;
 
-
   @override
   void initState() {
     tagLineRepository = TagLineRepository();
@@ -33,12 +32,19 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         backgroundColor: context.watch<MainState>().getMainColor,
         title: const Text(AppStrings.appTitle),
-        actions: const [
-          ThemeSwitch(),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/main/applications');
+            },
+            icon: const Icon(Icons.apps),
+          ),
+          const ThemeSwitch(),
         ],
       ),
       body: ScreenTypeLayout.builder(
         desktop: (BuildContext context) => TagLineColumn(tagLineBloc: tagLineBloc),
+        mobile: (BuildContext context) => TagLineColumn(tagLineBloc: tagLineBloc),
       ),
     );
   }
